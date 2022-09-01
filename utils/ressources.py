@@ -22,8 +22,7 @@ and isolate the Users
 def isolation_Users(res):
     usersStrtIndex = str.find(res, "users=[")
     usersEndIndex = str.find(res, "\n\t],", usersStrtIndex)
-    usersList = res[usersStrtIndex:usersEndIndex + len("\n\t]")]
-    return usersList
+    return res[usersStrtIndex:usersEndIndex + len("\n\t]")]
 
 
 '''
@@ -40,8 +39,7 @@ and isolate the Channels
 def isolation_Channels(res):
     channelsStrtIndex = str.find(res, "chats=[")
     channelsEndIndex = str.find(res, "\n\t],", channelsStrtIndex)
-    channelsList = res[channelsStrtIndex:channelsEndIndex + len("\n\t]")]
-    return channelsList
+    return res[channelsStrtIndex:channelsEndIndex + len("\n\t]")]
 
 
 '''
@@ -58,8 +56,7 @@ and isolate the Peers
 def isolation_Peers(res):
     peersStrtIndex = str.find(res, "peers=[")
     peersEndIndex = str.find(res, "\n\t],", peersStrtIndex)
-    peersList = res[peersStrtIndex:peersEndIndex + len("\n\t]")]
-    return peersList
+    return res[peersStrtIndex:peersEndIndex + len("\n\t]")]
 
 
 '''
@@ -249,12 +246,12 @@ def download_allprofilespics(client, ListofUser, ListofGroup):
     for elm in ListofUser:
         if not elm.id.isnumeric():
             continue
-        client.download_profile_photo(int(elm.id), "cache_telegram/users/" + elm.id)
+        client.download_profile_photo(int(elm.id), f"cache_telegram/users/{elm.id}")
 
     # download of groups profile pics
     for elm in ListofGroup:
         if not elm.id.isnumeric():
             continue
-        client.download_profile_photo(int(elm.id), "cache_telegram/groups/" + elm.id)
+        client.download_profile_photo(int(elm.id), f"cache_telegram/groups/{elm.id}")
 
 

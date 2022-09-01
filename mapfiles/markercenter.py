@@ -8,7 +8,6 @@ class MarkerHelper():
     def run(self):
         marker = App.get_running_app().root.ids.mapview.ids.mark
         marker.blink()
-        pass
 
 
 class MarkerCenter(MapMarker):

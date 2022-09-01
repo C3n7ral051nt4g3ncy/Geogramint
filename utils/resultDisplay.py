@@ -29,11 +29,14 @@ class MD3Card(MDCard):
     text = StringProperty()
 
     def add_elm_user(self, id, name, username, distance):
-        if os.path.exists("cache_telegram/users/" + str(id) + ".jpg"):
-            self.add_widget(fitimage.FitImage(
-                source="cache_telegram/users/" + str(id) + ".jpg",
-                size_hint=(None, None),
-            ))
+        if os.path.exists(f"cache_telegram/users/{str(id)}.jpg"):
+            self.add_widget(
+                fitimage.FitImage(
+                    source=f"cache_telegram/users/{str(id)}.jpg",
+                    size_hint=(None, None),
+                )
+            )
+
         else:
             self.add_widget(fitimage.FitImage(
                 source="appfiles/placeholder.png",
@@ -41,21 +44,47 @@ class MD3Card(MDCard):
             ))
         if len(name) > 50:
             name = name[:50]
-        self.add_widget(MDLabel(
-            font_name="DejaVuSans",
-            text="[font=DejaVuSans]Id: " + str(
-                id) + "\nName: " + name + "\nUsername: " + username + "\nDistance: " + distance + "m[/font]",
-            font_style=theme_font_styles[11],
-            markup=True
-        ))
+        self.add_widget(
+            MDLabel(
+                font_name="DejaVuSans",
+                text=(
+                    (
+                        (
+                            (
+                                (
+                                    (
+                                        (
+                                            f"[font=DejaVuSans]Id: {str(id)}"
+                                            + "\nName: "
+                                        )
+                                        + name
+                                    )
+                                    + "\nUsername: "
+                                )
+                                + username
+                            )
+                            + "\nDistance: "
+                        )
+                        + distance
+                    )
+                    + "m[/font]"
+                ),
+                font_style=theme_font_styles[11],
+                markup=True,
+            )
+        )
+
         return self
 
     def add_elm_group(self, id, name, distance):
-        if os.path.exists("cache_telegram/groups/" + str(id) + ".jpg"):
-            self.add_widget(fitimage.FitImage(
-                source="cache_telegram/groups/" + str(id) + ".jpg",
-                size_hint=(None, None),
-            ))
+        if os.path.exists(f"cache_telegram/groups/{str(id)}.jpg"):
+            self.add_widget(
+                fitimage.FitImage(
+                    source=f"cache_telegram/groups/{str(id)}.jpg",
+                    size_hint=(None, None),
+                )
+            )
+
         else:
             self.add_widget(fitimage.FitImage(
                 source="appfiles/placeholder.png",
@@ -63,12 +92,20 @@ class MD3Card(MDCard):
             ))
         if len(name) > 50:
             name = name[:50]
-        self.add_widget(MDLabel(
-            font_name="DejaVuSans",
-            text="[font=DejaVuSans]Id: " + str(id) + "\nName: " + name + "\nDistance: " + distance + "m[/font]",
-            font_style=theme_font_styles[11],
-            markup=True
-        ))
+        self.add_widget(
+            MDLabel(
+                font_name="DejaVuSans",
+                text=f"[font=DejaVuSans]Id: {str(id)}"
+                + "\nName: "
+                + name
+                + "\nDistance: "
+                + distance
+                + "m[/font]",
+                font_style=theme_font_styles[11],
+                markup=True,
+            )
+        )
+
         return self
 
 

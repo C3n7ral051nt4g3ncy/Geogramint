@@ -41,7 +41,7 @@ def telegramAPICall():
     except Exception as e:
         print(e)
 
-        Logger.info(f"Geogramint Search: Nothing Found")
+        Logger.info("Geogramint Search: Nothing Found")
         searchStarted = False
         return
     enabled = True
@@ -59,12 +59,12 @@ def startSearch(dt):
     if users is None and searchStarted == False \
             and api_id is not None and api_hash is not None and phone_number is not None:
         searchStarted = True
-        Logger.info(f"Geogramint Search: Searching ...")
+        Logger.info("Geogramint Search: Searching ...")
         try:
             t = Thread(target=telegramAPICall)
             t.start()
         except:
-            Logger.info(f"Geogramint Search: Nothing Found")
+            Logger.info("Geogramint Search: Nothing Found")
             searchStarted = False
 
 
@@ -135,7 +135,7 @@ def background_loop(dt):
         for user in users:
             name = ""
             if user.firstname is not None:
-                name += user.firstname + " "
+                name += f"{user.firstname} "
             if user.lastname is not None:
                 name += user.lastname
             resultDisplay.UserList().add_elm(user.id, name, user.username, user.distance)
